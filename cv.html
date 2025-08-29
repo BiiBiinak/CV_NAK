@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Professional CV</title>
+    <!-- Google Fonts for Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f3f4f6; /* Light gray background */
+        }
+        /* Custom styles for a cleaner look */
+        .cv-section {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 1rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            margin-bottom: 2rem;
+        }
+
+        /* Animation Styles */
+        .page-content {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeIn 0.8s ease-out forwards;
+        }
+
+        .animated-hover {
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+        .animated-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+        
+        .navbar-shadow {
+            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body class="p-4 md:p-8">
+
+    <div class="max-w-7xl mx-auto">
+        
+        <!-- Navigation Bar -->
+        <nav class="bg-white p-4 rounded-full navbar-shadow mb-8 flex items-center justify-between sticky top-4 z-50">
+            <!-- Left section: Logo/Name and navigation links -->
+            <div class="flex items-center space-x-4 md:space-x-8">
+                <!-- Logo -->
+                <div class="flex items-center space-x-2">
+                    <!-- Embedded logo image as a data URI -->
+                    <img src="nnn (3).png" alt="logo" class="w-12 h-12 object-contain">
+                    <span class="text-green-600 font-bold text-2xl">L.S</span>
+                </div>
+                <!-- Navigation links -->
+                <div class="hidden md:flex space-x-8">
+                    <button id="cv-link" class="text-gray-600 hover:text-green-600 font-semibold transition-colors duration-200">
+                        CV
+                    </button>
+                    <button id="projects-link" class="text-gray-600 hover:text-green-600 font-semibold transition-colors duration-200">
+                        Projects
+                    </button>
+                </div>
+            </div>
+
+            <!-- Right section: Search bar and buttons -->
+            <div class="flex items-center space-x-4">
+                <!-- Search bar (visible on md screens and up) -->
+                <div class="relative hidden md:block w-full max-w-sm">
+                    <input type="text" placeholder="Search..." class="w-full pl-10 pr-4 py-2 rounded-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-green-500">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd" />
+                    </svg>
+                </div>
+                
+                <!-- Hamburger menu for mobile -->
+                <button id="menu-button" class="md:hidden p-2 rounded-lg text-gray-600 hover:bg-gray-100 transition-colors duration-200">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                </button>
+
+                <!-- Sign In button (visible on md screens and up) -->
+                <button class="bg-green-600 text-white font-bold py-2 px-6 rounded-full hover:bg-green-700 transition duration-300 ease-in-out transform hover:scale-105 hidden md:block">
+                    Sign In
+                </button>
+            </div>
+        </nav>
+
+        <!-- Mobile Menu (Hidden by default) -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white rounded-lg shadow-lg p-4 mb-4">
+            <div class="flex flex-col space-y-2">
+                <button id="mobile-cv-link" class="text-gray-600 hover:text-green-600 font-semibold p-2 text-left transition-colors duration-200 w-full rounded-md">
+                    CV
+                </button>
+                <button id="mobile-projects-link" class="text-gray-600 hover:text-green-600 font-semibold p-2 text-left transition-colors duration-200 w-full rounded-md">
+                    Projects
+                </button>
+                <div class="border-t border-gray-200 my-2"></div>
+                <div class="relative w-full">
+                    <input type="text" placeholder="Search..." class="w-full pl-10 pr-4 py-2 rounded-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-green-500">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd" />
+                    </svg>
+                </div>
+                <button class="bg-green-500 text-white font-bold py-1 px-4 rounded-full hover:bg-green-500 transition duration-300 ease-in-out transform hover:scale-100 mt-1">
+                    Sign In
+                </button>
+            </div>
+        </div>
+
+        <!-- Page 1: CV Content -->
+        <div id="cv-page" class="page-content">
+            <!-- Header Section -->
+            <header class="cv-section text-center md:text-left md:flex items-center justify-between animated-hover">
+                <!-- Profile Picture and Name -->
+                <div class="flex flex-col md:flex-row items-center space-x-0 md:space-x-8 mb-4 md:mb-0">
+                    <!-- Embedded logo image as a data URI for profile picture -->
+                    <img src="nnn (3).png" alt="Profile Picture" class="rounded-full w-32 h-32 object-cover mb-4 md:mb-0">
+                    <div>
+                        <h1 class="text-4xl font-bold text-gray-800">LENG SOVATHANAK</h1>
+                        <p class="text-xl text-gray-600">Software Engineer</p>
+                    </div>
+                </div>
+                
+                <!-- Contact Information -->
+                <div class="text-gray-600 space-y-2">
+                    <div class="flex items-center justify-center md:justify-start space-x-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-500" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M14.243 5.757a6 6 0 10-.986 9.896 6.04 6.04 0 00-.915 2.128c-.28.84-1.57.84-1.85 0a6.04 6.04 0 00-.915-2.128 6 6 0 10-.986-9.896zM10 13a3 3 0 100-6 3 3 0 000 6z" clip-rule="evenodd" />
+                        </svg>
+                        <span> K33 , PP, CAM</span>
+                    </div>
+                    <div class="flex items-center justify-center md:justify-start space-x-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-500" viewBox="0 0 20 20" fill="currentColor">
+                            <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
+                            <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
+                        </svg>
+                        <a href="mailto:jane.doe@email.com" class="hover:underline">Lengsovathanak44@email.com</a>
+                    </div>
+                    <div class="flex items-center justify-center md:justify-start space-x-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-500" viewBox="0 0 20 20" fill="currentColor">
+                            <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.774a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
+                        </svg>
+                        <span>(855) 76-8104621</span>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Main Content Grid -->
+            <main class="mt-8 grid grid-cols-1 md:grid-cols-3 gap-8">
+                
+                <!-- Left Column -->
+                <div class="md:col-span-2">
+                    <!-- Summary Section -->
+                    <section class="cv-section animated-hover">
+                        <h2 class="text-2xl font-bold text-gray-800 mb-4 border-b-2 border-gray-200 pb-2">Summary</h2>
+                        <p class="text-gray-700 leading-relaxed">
+                            Highly motivated and detail-oriented Software Engineer with 5+ years of experience in developing
+                            web applications using modern technologies. Proficient in front-end and back-end development,
+                            with a strong focus on creating scalable and efficient solutions. Eager to contribute to a
+                            dynamic team and solve complex challenges.
+                        </p>
+                    </section>
+
+                    <!-- Experience Section -->
+                    <section class="cv-section animated-hover">
+                        <h2 class="text-2xl font-bold text-gray-800 mb-4 border-b-2 border-gray-200 pb-2">Experience</h2>
+                        <div class="space-y-6">
+                            <!-- Job 1 -->
+                            <div class="pb-4">
+                                <h3 class="text-xl font-semibold text-gray-800">Senior Software Engineer</h3>
+                                <p class="text-gray-600">Tech Solutions Inc. | Jan 2020 - Present</p>
+                                <ul class="list-disc list-inside mt-2 text-gray-700 space-y-1">
+                                    <li>Developed and maintained a high-traffic e-commerce platform using React and Node.js.</li>
+                                    <li>Implemented new features, resulting in a 15% increase in user engagement.</li>
+                                    <li>Led a team of 3 junior developers, providing mentorship and code reviews.</li>
+                                </ul>
+                            </div>
+                            <!-- Job 2 -->
+                            <div>
+                                <h3 class="text-xl font-semibold text-gray-800">Junior Developer</h3>
+                                <p class="text-gray-600">Innovate Ltd. | Jun 2018 - Dec 2019</p>
+                                <ul class="list-disc list-inside mt-2 text-gray-700 space-y-1">
+                                    <li>Assisted in the development of a company-internal dashboard using Angular.</li>
+                                    <li>Collaborated with the design team to ensure UI/UX consistency.</li>
+                                    <li>Wrote unit and integration tests to ensure code quality.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+                
+                <!-- Right Column -->
+                <div class="md:col-span-1">
+                    <!-- Skills Section -->
+                    <section class="cv-section animated-hover">
+                        <h2 class="text-2xl font-bold text-gray-800 mb-4 border-b-2 border-gray-200 pb-2">Skills</h2>
+                        <div class="grid grid-cols-2 gap-4">
+                            <a href="https://the-noodle-way.netlify.app" target="_blank" class="bg-gray-200 text-gray-800 text-center py-2 px-4 rounded-full font-medium animated-hover">HTML/CSS</a>
+                            <a href="https://nakboss.netlify.app/" target="_blank" class="bg-gray-200 text-gray-800 text-center py-2 px-4 rounded-full font-medium animated-hover">JavaScript</a>
+                            <a href="https://the-noodle-way.netlify.app" target="_blank" class="bg-gray-200 text-gray-800 text-center py-2 px-4 rounded-full font-medium animated-hover">React</a>
+                            <a href="https://the-noodle-way.netlify.app" target="_blank" class="bg-gray-200 text-gray-800 text-center py-2 px-4 rounded-full font-medium animated-hover">Node.js</a>
+                            <a href="https://the-noodle-way.netlify.app" target="_blank" class="bg-gray-200 text-gray-800 text-center py-2 px-4 rounded-full font-medium animated-hover">Tailwind CSS</a>
+                            <a href="https://the-noodle-way.netlify.app" target="_blank" class="bg-gray-200 text-gray-800 text-center py-2 px-4 rounded-full font-medium animated-hover">Git</a>
+                </div>
+</section>
+
+
+                    <!-- Education Section -->
+                    <section class="cv-section animated-hover">
+                        <h2 class="text-2xl font-bold text-gray-800 mb-4 border-b-2 border-gray-200 pb-2">Education</h2>
+                        <div class="space-y-4">
+                            <div>
+                                <h3 class="text-xl font-semibold text-gray-800">Master of Science in Computer Science</h3>
+                                <p class="text-gray-600">State University | Sep 2016 - May 2018</p>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-semibold text-gray-800">Bachelor of Science in Information Technology</h3>
+                                <p class="text-gray-600">Community College | Sep 2012 - May 2016</p>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </main>
+            
+            <!-- Button Section -->
+            <div class="mt-8 text-center">
+                <button id="downloadButton" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-full transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-blue-300">
+                    Download CV
+                </button>
+            </div>
+        </div>
+
+        <!-- Page 2: Projects Content -->
+        <div id="projects-page" class="page-content hidden">
+            <h2 class="text-3xl font-bold text-gray-800 mb-6">Projects</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                
+                <section class="cv-section animated-hover">
+                    <h3 class="text-2xl font-bold text-gray-800 mb-2">E-commerce Platform</h3>
+                    <p class="text-gray-700 mb-4">A full-stack e-commerce site with user authentication, a shopping cart, and a secure checkout process. Built with React, Node.js, and MongoDB.</p>
+                    <a href="#" class="text-blue-600 hover:underline font-semibold">View Project</a>
+                </section>
+                
+                <section class="cv-section animated-hover">
+                    <h3 class="text-2xl font-bold text-gray-800 mb-2">Task Management App</h3>
+                    <p class="text-gray-700 mb-4">A simple web-based task manager that allows users to create, update, and delete tasks. Features drag-and-drop functionality and local storage for persistence.</p>
+                    <a href="#" class="text-blue-600 hover:underline font-semibold">View Project</a>
+                </section>
+
+                <section class="cv-section animated-hover">
+                    <h3 class="text-2xl font-bold text-gray-800 mb-2">Weather Dashboard</h3>
+                    <p class="text-gray-700 mb-4">A dashboard that fetches and displays real-time weather data from a third-party API. The app is fully responsive and built using vanilla JavaScript and CSS Grid.</p>
+                    <a href="#" class="text-blue-600 hover:underline font-semibold">View Project</a>
+                </section>
+
+            </div>
+        </div>
+
+    </div>
+    
+    <!-- Custom Modal/Message Box -->
+    <div id="messageBox" class="fixed inset-0 bg-gray-600 bg-opacity-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white p-8 rounded-lg shadow-xl text-center max-w-sm w-full">
+            <h3 class="text-xl font-semibold text-gray-800 mb-4">Download CV</h3>
+            <p class="text-gray-700 mb-6">Download functionality would be implemented here, e.g., generating a PDF.</p>
+            <button id="closeButton" class="bg-blue-600 text-white font-bold py-2 px-6 rounded-full hover:bg-blue-700">
+                Close
+            </button>
+        </div>
+    </div>
+
+    <script>
+        // Simple JavaScript for page switching, mobile menu, and message box
+        const cvLink = document.getElementById('cv-link');
+        const projectsLink = document.getElementById('projects-link');
+        const cvPage = document.getElementById('cv-page');
+        const projectsPage = document.getElementById('projects-page');
+        const downloadButton = document.getElementById('downloadButton');
+        const messageBox = document.getElementById('messageBox');
+        const closeButton = document.getElementById('closeButton');
+        const navButtons = document.querySelectorAll('nav button');
+
+        const menuButton = document.getElementById('menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileCvLink = document.getElementById('mobile-cv-link');
+        const mobileProjectsLink = document.getElementById('mobile-projects-link');
+
+        // Function to show a page and hide others
+        function showPage(pageToShow) {
+            // Hide all pages first
+            const pages = document.querySelectorAll('.page-content');
+            pages.forEach(page => page.classList.add('hidden'));
+
+            // Show the selected page
+            pageToShow.classList.remove('hidden');
+
+            // Reset active state for all nav buttons
+            navButtons.forEach(button => {
+                button.classList.remove('text-green-600');
+                button.classList.add('text-gray-600');
+            });
+
+            // Hide mobile menu after selection
+            if (!mobileMenu.classList.contains('hidden')) {
+                mobileMenu.classList.add('hidden');
+            }
+        }
+        
+        // Function to set the active navigation link
+        function setActiveLink(linkId) {
+            // Deactivate all links
+            document.querySelectorAll('#cv-link, #projects-link, #mobile-cv-link, #mobile-projects-link').forEach(button => {
+                button.classList.remove('text-green-600');
+                button.classList.add('text-gray-600');
+            });
+
+            // Activate the clicked link
+            if (linkId === 'cv-link' || linkId === 'mobile-cv-link') {
+                document.getElementById('cv-link').classList.remove('text-gray-600');
+                document.getElementById('cv-link').classList.add('text-green-600');
+                if (document.getElementById('mobile-cv-link')) {
+                    document.getElementById('mobile-cv-link').classList.remove('text-gray-600');
+                    document.getElementById('mobile-cv-link').classList.add('text-green-600');
+                }
+            } else if (linkId === 'projects-link' || linkId === 'mobile-projects-link') {
+                document.getElementById('projects-link').classList.remove('text-gray-600');
+                document.getElementById('projects-link').classList.add('text-green-600');
+                if (document.getElementById('mobile-projects-link')) {
+                    document.getElementById('mobile-projects-link').classList.remove('text-gray-600');
+                    document.getElementById('mobile-projects-link').classList.add('text-green-600');
+                }
+            }
+        }
+
+        // Event listeners for navigation links
+        cvLink.addEventListener('click', () => {
+            showPage(cvPage);
+            setActiveLink('cv-link');
+        });
+
+        projectsLink.addEventListener('click', () => {
+            showPage(projectsPage);
+            setActiveLink('projects-link');
+        });
+
+        if (mobileCvLink) {
+            mobileCvLink.addEventListener('click', () => {
+                showPage(cvPage);
+                setActiveLink('mobile-cv-link');
+            });
+        }
+        
+        if (mobileProjectsLink) {
+            mobileProjectsLink.addEventListener('click', () => {
+                showPage(projectsPage);
+                setActiveLink('mobile-projects-link');
+            });
+        }
+        
+        // Mobile menu toggle
+        menuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        // Set initial active link on page load
+        showPage(cvPage);
+        setActiveLink('cv-link');
+
+        // Event listeners for the message box
+        downloadButton.addEventListener('click', () => {
+            messageBox.style.display = 'flex';
+        });
+
+        closeButton.addEventListener('click', () => {
+            messageBox.style.display = 'none';
+        });
+    </script>
+
+</body>
+</html>
